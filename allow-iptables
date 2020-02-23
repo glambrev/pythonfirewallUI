@@ -1,0 +1,17 @@
+#!/bin/sh
+
+######### Script to start firewall support before ethernet card initialize
+echo ""
+echo "Accepting inbound and outbound traffic....."
+echo "Warning!!!!!"
+echo "Set rules in order to protect your network!!!"
+
+##### Set Policies #####
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+iptables -X
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+echo 1 > /proc/sys/net/ipv4/ip_forward

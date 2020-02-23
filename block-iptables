@@ -1,0 +1,15 @@
+#!/bin/sh
+
+######### Script to start firewall support before ethernet card initialize
+
+echo "Disabeling Firewall.........."
+echo " Your LAN is blocked......."
+echo 0 > /proc/sys/net/ipv4/ip_forward
+
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+iptables -X
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+######### HOF NAT ###############################
+echo ""
+echo "Starting Masquearading....."
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+##### Set Policies #####
+iptables -F
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -t nat -A PREROUTING -o eth0 -j MASQUERADE

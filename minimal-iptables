@@ -1,0 +1,18 @@
+#!/bin/sh
+
+######### Script to start firewall support before ethernet card initialize
+echo ""
+echo "Accepting inbound and outbound traffic....."
+echo "Warning!!!!!"
+echo "To Enable Your Local Area Network go to NAT Section "
+echo 0 > /proc/sys/net/ipv4/ip_forward
+##### Set Policies #####
+iptables -F
+iptables -t nat -F
+iptables -t mangle -F
+iptables -X
+iptables -P INPUT ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -P FORWARD DROP
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
