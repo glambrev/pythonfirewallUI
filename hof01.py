@@ -140,7 +140,7 @@ def about ():
     '  IS2S52 - Project - IS (2006/07):\n' +
     '  George Lambrev\n' +
     '  Phone: 01446737808\n' +
-    '  email: georgilambrev@yahoo.co.uk')
+    '  email: glambrev at gmail.com')
     about = Pmw.AboutDialog(root, applicationname='HOF')
 
 
